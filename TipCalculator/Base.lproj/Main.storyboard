@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D2W-S9-jTF">
-                                <rect key="frame" x="263" y="183" width="35" height="21"/>
+                                <rect key="frame" x="205" y="183" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -47,7 +47,7 @@
                                 <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FX1-Ec-5NF">
-                                <rect key="frame" x="263" y="256" width="35" height="21"/>
+                                <rect key="frame" x="205" y="256" width="93" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -68,22 +68,64 @@
                                     <segment title="20%"/>
                                     <segment title="25%"/>
                                 </segments>
+                                <connections>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="eHR-RA-EQP"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="WeS-bU-ixI">
                                 <rect key="frame" x="205" y="105" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="hk1-OX-SSp"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Y6E-sb-i0e" appends="YES" id="FqG-Rd-LPO"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tip Calculator" id="WHy-2p-w1l"/>
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="WHy-2p-w1l">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Mgf-B6-WNB">
+                            <connections>
+                                <segue destination="zPc-oT-KBq" kind="push" id="Gqh-Pe-PDC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bill" destination="WeS-bU-ixI" id="1kY-7W-6wC"/>
+                        <outlet property="control" destination="N34-4C-DOI" id="taX-z1-pIE"/>
+                        <outlet property="tip" destination="D2W-S9-jTF" id="FSM-VX-LKr"/>
+                        <outlet property="total" destination="FX1-Ec-5NF" id="1hM-BQ-b4o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Y6E-sb-i0e">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="hqa-Zr-LTI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="463.5" y="42.5"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="fdx-Y2-l5w">
+            <objects>
+                <viewController id="zPc-oT-KBq" customClass="SettingsViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y7A-qw-Kzp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NjP-DS-PSD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SPM-iI-Uno" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931" y="43"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iFy-sr-5mF">
