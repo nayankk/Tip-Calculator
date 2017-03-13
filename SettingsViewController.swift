@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var defaultPct: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,20 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func storeDefaultPct(_ sender: Any) {
+        let userDefaults = UserDefaults.standard
+        
+        userDefaults.set(defaultPct.selectedSegmentIndex, forKey:"defaultPct")
+        userDefaults.synchronize();
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let userDefaults = UserDefaults.standard
+        defaultPct.selectedSegmentIndex = userDefaults.integer(
+            forKey: "defaultPct")
+        print("view will appear")
+    }
 
     /*
     // MARK: - Navigation
